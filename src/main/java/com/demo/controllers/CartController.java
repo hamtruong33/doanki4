@@ -78,15 +78,15 @@ public class CartController {
 			}
 		}
 		modelMap.put("payPalConfig", payPalService.getPayPalConfig());
-		String currentlink = request.getHeader("referer");
-		String[] text = currentlink.split("\\W",0);
-		//System.out.println(text[5]);
-		if(text[5].equalsIgnoreCase("product")) {
-			return "redirect:../../product";
-		}else {
-			return "redirect:../../home";
-		}
-		//return "redirect:../../cart";
+//		String currentlink = request.getHeader("referer");
+//		String[] text = currentlink.split("\\W",0);
+//		//System.out.println(text[5]);
+//		if(text[5].equalsIgnoreCase("product")) {
+//			return "redirect:../../product";
+//		}else {
+//			return "redirect:../../home";
+//		}
+		return "redirect:../../cart";
 	}
 
 //	@RequestMapping(value = "success", method = RequestMethod.GET)

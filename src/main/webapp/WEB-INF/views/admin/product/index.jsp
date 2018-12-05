@@ -30,7 +30,7 @@
 				<div class="box-header">
 					  <h3 class="box-title">Data Table With Full Features</h3> 
 				</div>
-				<br> <input type="text" placeholder="Search ...." id="keyword" name="keyword">
+				<br> <!-- <input type="text" placeholder="Search ...." id="keyword" name="keyword"> -->
 				<br>
 				
 				<div class="box-body">

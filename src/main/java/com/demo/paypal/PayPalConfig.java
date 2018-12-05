@@ -6,6 +6,17 @@ public class PayPalConfig {
 	private String posturl;
 	private String business;
 	private String returnurl;
+	private String returnurl1;
+	
+	
+
+	public String getReturnurl1() {
+		return returnurl1;
+	}
+
+	public void setReturnurl1(String returnurl1) {
+		this.returnurl1 = returnurl1;
+	}
 
 	public String getAuthToken() {
 		return authToken;

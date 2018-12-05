@@ -19,9 +19,15 @@ public interface OrderDetailRepository extends CrudRepository<Orderdetail, Integ
 	@Query("select o from Orderdetail o where o.product.shop.id = :idshop ")
 	public List<Orderdetail> findByShop(@Param("idshop") int idshop);
 	
+	@Query(value="select o from Orderdetail o where o.product.shop.id = :idshop order by o.orders.dateCreated desc  ")
+	public List<Orderdetail> findByShopNew(@Param("idshop") int idshop);
+	
 	@Query("select new com.demo.entities.BestSeller(o.product.id,sum(o.quantity)) from Orderdetail o group by o.product.id order by sum(o.quantity) desc")
 	public List<BestSeller> bestseller();
 	
 	@Query("select o from Orderdetail o where o.orders.user.id = :iduser ")
 	public List<Orderdetail> findByUser(@Param("iduser") int iduser);
+	
+	@Query("select o from Orderdetail  o where o.product.id = :productId")
+    public Orderdetail findByProductId(@Param("productId") int productId);
 }

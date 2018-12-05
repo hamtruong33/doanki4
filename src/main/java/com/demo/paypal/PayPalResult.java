@@ -46,6 +46,15 @@ public class PayPalResult {
 	private String residence_country;
 	private String transaction_subject;
 	private String payment_gross;
+	private String item_number;
+	
+	public String getItem_number() {
+		return item_number;
+	}
+
+	public void setItem_number(String item_number) {
+		this.item_number = item_number;
+	}
 
 	public String getMc_gross() {
 		return mc_gross;

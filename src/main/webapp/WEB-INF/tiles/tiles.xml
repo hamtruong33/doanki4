@@ -23,6 +23,9 @@
 	<definition name="product.category" extends="mytemplate">
 		<put-attribute name="content" value="/WEB-INF/views/customer/product/category.jsp"></put-attribute>
 	</definition>
+	<definition name="product.search" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/product/search.jsp"></put-attribute>
+	</definition>
 	<definition name="cart.index" extends="mytemplate">
 		<put-attribute name="content" value="/WEB-INF/views/customer/cart/index.jsp"></put-attribute>
 	</definition>

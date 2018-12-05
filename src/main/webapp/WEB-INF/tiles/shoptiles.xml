@@ -4,18 +4,85 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
+
+
+	<definition name="login_seller" template="/WEB-INF/views/template/login_template.jsp">
+        <put-attribute name="content" value=""/>
+    </definition>
+    <!-- Login -->
+    <definition name="seller.login" extends="login_seller">
+        <put-attribute name="content" value="/WEB-INF/views/seller/home/index.jsp"></put-attribute>
+    </definition>
+    <!-- Register -->
+    <definition name="seller.register" extends="login_seller">
+        <put-attribute name="content" value="/WEB-INF/views/seller/home/register.jsp"></put-attribute>
+    </definition>
+
+    <!-- Fogot Pass -->
+    <definition name="seller.forgotPassword" extends="login_seller">
+        <put-attribute name="content" value="/WEB-INF/views/seller/home/forgotPassword.jsp"></put-attribute>
+    </definition>
+
+    <definition name="seller.resetPassword" extends="login_seller">
+        <put-attribute name="content" value="/WEB-INF/views/seller/home/resetPassword.jsp"></put-attribute>
+    </definition>
+    <definition name="seller.successSendMail" extends="login_seller">
+        <put-attribute name="content" value="/WEB-INF/views/seller/home/successSendMail.jsp"></put-attribute>
+    </definition>
+
+    <!-- Seller Template -->
+    <definition name="seller_template" template="/WEB-INF/views/template/seller_template.jsp">
+        <put-attribute name="content" value=""/>
+    </definition>
+
+    <definition name="seller.home" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/home/home.jsp"></put-attribute>
+    </definition>
+    <!-- Product -->
+    <definition name="seller.product.index" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/product/index.jsp"></put-attribute>
+    </definition>
+    <definition name="seller.addproduct" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/product/selleraddproduct.jsp"></put-attribute>
+    </definition>
+    <definition name="seller.editproduct" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/product/sellereditproduct.jsp"></put-attribute>
+    </definition>
+    <!-- Order -->
+    <definition name="seller.order.index" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/order/index.jsp"></put-attribute>
+    </definition>
+    <definition name="seller.order.detail" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/order/detailOrder.jsp"></put-attribute>
+    </definition>
+
+    <!-- Invoice Print -->
+    <definition name="invoice.template" template="/WEB-INF/views/template/invoice_print_template.jsp">
+        <put-attribute name="content" value=""></put-attribute>
+    </definition>
+        <definition name="order.invoice" extends="invoice.template">
+            <put-attribute name="content" value="/WEB-INF/views/seller/order/detailOrder.jsp"></put-attribute>
+        </definition>
+
+
+
+    <definition name="seller.profile" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/profile/index.jsp"></put-attribute>
+    </definition>
+
+    <!-- Member Ship -->
+    <definition name="memberShip_template" template="/WEB-INF/views/template/memberShip_template.jsp">
+        <put-attribute name="content" value=""/>
+    </definition>
+        <definition name="seller.membership" extends="memberShip_template">
+            <put-attribute name="content" value="/WEB-INF/views/seller/membership/index.jsp"></put-attribute>
+        </definition>
+        <definition name="seller.membership.success" extends="memberShip_template">
+            <put-attribute name="content" value="/WEB-INF/views/seller/membership/success.jsp"></put-attribute>
+        </definition>
 	
 	
-	<definition name="loginshoptemplate" template="/WEB-INF/views/template/loginsellertemplate.jsp">
-		<put-attribute name="content" value=""></put-attribute>
-	</definition>
-	<definition name="shop.login" extends="loginshoptemplate">
-		<put-attribute name="content" value="/WEB-INF/views/seller/login.jsp"></put-attribute>
-	</definition>
-	<definition name="shop.index" extends="mytemplate">
-		<put-attribute name="content" value="/WEB-INF/views/seller/index.jsp"></put-attribute>
-	</definition>
-	
-	
+
+
 
 </tiles-definitions>

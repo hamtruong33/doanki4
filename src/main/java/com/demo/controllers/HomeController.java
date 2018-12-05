@@ -1,7 +1,9 @@
 package com.demo.controllers;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +24,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.demo.entities.BestSeller;
 import com.demo.entities.Group1;
+import com.demo.entities.Product;
 import com.demo.entities.Roleforuser;
 import com.demo.entities.Shop;
 import com.demo.entities.User;
 import com.demo.services.EmailService;
 import com.demo.services.OrderService;
+import com.demo.services.ProductService;
 import com.demo.services.RoleService;
 import com.demo.services.ShopService;
 import com.demo.services.UserService;
@@ -47,8 +52,8 @@ public class HomeController {
 	@Autowired
 	private EmailService emailService;
 	
-//	@Autowired
-//	private ShopService shopService;
+	@Autowired
+	private ProductService productService;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -58,8 +63,15 @@ public class HomeController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(ModelMap modelMap) {
-
+		modelMap.put("listnewproduct", productService.listNewProduct(4));
+		List<Product> products = new ArrayList<Product>();
+		for(BestSeller bestsaller : productService.bestseller()) {
+			products.add(productService.findById(bestsaller.getProductid()));
+		}
+		modelMap.put("bestseller", products);
 		return "home.index";
+
+		
 	}
 	//go to login user page
 	@RequestMapping(value = "login", method = RequestMethod.GET)
@@ -228,4 +240,6 @@ public class HomeController {
 		}
 
 	}
+	
+	
 }

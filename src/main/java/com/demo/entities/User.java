@@ -40,44 +40,14 @@ public class User implements java.io.Serializable {
 	private Integer phone;
 	private String token;
 	private String photo;
-	private Boolean status;
 	private Set<Roleforuser> roleforusers = new HashSet<Roleforuser>(0);
 	private Set<Orders> orderses = new HashSet<Orders>(0);
 	private Set<Review> reviews = new HashSet<Review>(0);
 	
 	
 	
-	public User(Integer id,
-			@NotEmpty(groups = { Group1.class, Group2.class }) @Length(min = 3, max = 10, groups = {
-					Group1.class, Group2.class }) String username,
-			@NotEmpty(groups = Group1.class) String password, String fullName,
-			@NotEmpty(groups = { Group1.class, Group2.class }) @Email(groups = { Group1.class,
-					Group2.class }) String email,
-			String address, Integer phone, String token, String photo, Boolean status, Set<Roleforuser> roleforusers,
-			Set<Orders> orderses, Set<Review> reviews) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.fullName = fullName;
-		this.email = email;
-		this.address = address;
-		this.phone = phone;
-		this.token = token;
-		this.photo = photo;
-		this.status = status;
-		this.roleforusers = roleforusers;
-		this.orderses = orderses;
-		this.reviews = reviews;
-	}
+	
 
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
 
 	public User(Integer id,
 			@NotEmpty(groups = { Group1.class, Group2.class }) @Length(min = 3, max = 10, groups = {

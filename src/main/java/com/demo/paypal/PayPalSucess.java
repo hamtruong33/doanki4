@@ -140,6 +140,9 @@ public class PayPalSucess {
 					if (temp[0].equals("receiver_email")) {
 						payPalResult.setReceiver_email(temp[1]);
 					}
+					if (temp[0].equals("item_number")) {
+						payPalResult.setItem_number(temp[1]);
+					}
 
 					if (temp[0].equals("payment_fee")) {
 						payPalResult.setPayment_fee(temp[1]);

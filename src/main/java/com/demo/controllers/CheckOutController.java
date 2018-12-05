@@ -92,12 +92,16 @@ public class CheckOutController {
 					
 					PayPalSucess payPalSucess = new PayPalSucess();
 					PayPalResult payPalResult = payPalSucess.getPayPal(request, payPalService.getPayPalConfig());
-					if(payPalResult.getPayer_email()==null) {
-						return "cart.index";
-					}else {
-						orders.setPaymentMethod("paypal");
-					}
+					System.out.println(payPalResult.getPayer_email());
+//					if(payPalResult.getPayer_email()==null) {
+//						return "cart.index";
+//					}else {
+//						
+//					}
+					orders.setPaymentMethod("paypal");	
+					
 				}
+				orders.setStatus(false);
 				orderService.create(orders);
 				double total = 0;
 				for(Item item : cart) {

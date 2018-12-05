@@ -49,6 +49,9 @@
 	<definition name="category.add" extends="admin_template">
 		<put-attribute name="content" value="/WEB-INF/views/admin/category/addcategory.jsp"></put-attribute>
 	</definition>
+	<definition name="category.edit" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/category/editcategory.jsp"></put-attribute>
+	</definition>
 	<!-- Order -->
 	<definition name="order.index" extends="admin_template">
 		<put-attribute name="content" value="/WEB-INF/views/admin/order/index.jsp"></put-attribute>
@@ -69,7 +72,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/admin/role/addrole.jsp"></put-attribute>
 	</definition>
 	<!-- Shop -->
-	<definition name="shop.index" extends="admin_template">
+	<definition name="adminshop.index" extends="admin_template">
 		<put-attribute name="content" value="/WEB-INF/views/admin/shop/index.jsp"></put-attribute>
 	</definition>
 	

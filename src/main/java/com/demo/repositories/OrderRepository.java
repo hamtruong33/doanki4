@@ -15,4 +15,7 @@ public interface OrderRepository extends CrudRepository<Orders, Integer>{
 	
 	@Query("select o from Orders o where o.user.id =:iduser")
 	public List<Orders> findbyuser(@Param("iduser")int iduser);
+	
+	@Query("select o from Orders o order by o.dateCreated desc")
+	public List<Orders> findAllorderby();
 }

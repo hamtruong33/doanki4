@@ -187,8 +187,8 @@
 						<div id="top-search">
 							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i
 								class="icon-line-cross"></i></a>
-							<form action="search.html?" method="get">
-								<input id="search" type="text" name="q" class="form-control"
+							<form action="${pageContext.request.contextPath}/product/search" method="get">
+								<input id="search" type="text" name="keywordsearch" 
 									value="" placeholder="Type &amp; Hit Enter..">
 								<div id="divAutoComplete" style="background-color: #fff"></div>
 							</form>
@@ -547,7 +547,7 @@
 			var text = $('#search').val();
 
 			if (text) {
-				$("#divLoader").show();
+				//$("#divLoader").show();
 
 				$
 						.ajax({
@@ -559,7 +559,7 @@
 							success : function(data) {
 
 								$("#divAutoComplete").html('');
-								$("#divLoader").hide();
+								//$("#divLoader").hide();
 								if (data != null) {
 
 									var html = "<div >";
@@ -585,7 +585,7 @@
 								}
 							},
 							error : function(result) {
-								$("#divLoader").hide();
+								//$("#divLoader").hide();
 							}
 						});
 			} else {
@@ -596,7 +596,7 @@
 		function close() {
 			$("#divAutoComplete").html("");
 			$("#divAutoComplete").slideUp();
-			$("#divLoader").hide();
+			//$("#divLoader").hide();
 		}
 		function chuyentrang(s) {
 			window.location = '${pageContext.request.contextPath }/product/detail/'

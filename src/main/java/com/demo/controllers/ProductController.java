@@ -26,88 +26,98 @@ import com.demo.services.ProductService;
 import com.demo.services.ReviewService;
 import com.demo.services.UserService;
 
-
-
 @Controller
 @RequestMapping("product")
 public class ProductController {
-	
+
 	@Autowired
-	private ProductService productService ;
-	
+	private ProductService productService;
+
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private ReviewService reviewService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public String index(ModelMap modelMap , HttpSession httpSession,HttpServletRequest request) {
+	public String index(ModelMap modelMap, HttpSession httpSession, HttpServletRequest request) {
 		List<Product> products = (List<Product>) productService.findAllByStatusAndQuantity();
-		//modelMap.put("products", products);
+		// modelMap.put("products", products);
 		modelMap.put("listcategory", categoryService.findAll());
 		PagedListHolder pagedListHolder = new PagedListHolder(products);
-		int page  = ServletRequestUtils.getIntParameter(request, "p", 0);
+		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
 		pagedListHolder.setPage(page);
-		//pagedListHolder.setMaxLinkedPages(2);
-		pagedListHolder.setPageSize(5);
+		// pagedListHolder.setMaxLinkedPages(2);
+		pagedListHolder.setPageSize(3);
 		modelMap.put("pagedListHolder", pagedListHolder);
 		return "product.category";
 	}
-	@RequestMapping(value ="gotoCategory/{idCate}" , method = RequestMethod.GET)
-	public String gotoCategory(@PathVariable("idCate") int idCate , ModelMap modelMap,HttpServletRequest request) {
+
+	@RequestMapping(value = "gotoCategory/{idCate}", method = RequestMethod.GET)
+	public String gotoCategory(@PathVariable("idCate") int idCate, ModelMap modelMap, HttpServletRequest request) {
 		List<Product> products = (List<Product>) productService.findListProductByCategory(idCate);
-		//modelMap.put("products", products);
+		// modelMap.put("products", products);
 		PagedListHolder pagedListHolder = new PagedListHolder(products);
-		int page  = ServletRequestUtils.getIntParameter(request, "p", 0);
+		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
 		pagedListHolder.setPage(page);
-		//pagedListHolder.setMaxLinkedPages(2);
+		// pagedListHolder.setMaxLinkedPages(2);
 		pagedListHolder.setPageSize(3);
 		modelMap.put("pagedListHolder", pagedListHolder);
 		modelMap.put("listcategory", categoryService.findAll());
-		
+
 		return "product.category";
 	}
+
 	//
-	//go to product info
-	@RequestMapping(value="detail/{id}",method = RequestMethod.GET)
-	public String gotoProductInfo(@PathVariable("id") int id , ModelMap modelMap ) {
+	// go to product info
+	@RequestMapping(value = "detail/{id}", method = RequestMethod.GET)
+	public String gotoProductInfo(@PathVariable("id") int id, ModelMap modelMap) {
 		modelMap.put("product", productService.findById(id));
 		modelMap.put("listReview", reviewService.findallByIdProduct(id));
 		return "product.detail";
 	}
+
 	// review
-		@RequestMapping(value = "review/{productid}", method = RequestMethod.POST)
-		public String review(HttpSession httpSession ,
-				@ModelAttribute("user") User user ,
-				@PathVariable("productid") int productid,
-				HttpServletRequest request,
-				Authentication authentication) {
-			
-			
-			if (authentication == null) {
-				return "redirect:../home/login";
-			} else {
-				String comment = request.getParameter("comment");
-				Review review = new Review();
-				review.setContent(comment);
-				review.setDateCreated(new Date());
-				review.setProduct(productService.findById(productid));
-				review.setUser(userService.findByUsername(authentication.getName()));
-				reviewService.save(review);
-				return "redirect:../../product/detail/{productid}";
-				
-			}
-			
+	@RequestMapping(value = "review/{productid}", method = RequestMethod.POST)
+	public String review(HttpSession httpSession, @ModelAttribute("user") User user,
+			@PathVariable("productid") int productid, HttpServletRequest request, Authentication authentication) {
+
+		if (authentication == null) {
+			return "redirect:../home/login";
+		} else {
+			String comment = request.getParameter("comment");
+			Review review = new Review();
+			review.setContent(comment);
+			review.setDateCreated(new Date());
+			review.setProduct(productService.findById(productid));
+			review.setUser(userService.findByUsername(authentication.getName()));
+			reviewService.save(review);
+			return "redirect:../../product/detail/{productid}";
+
 		}
-	
-//	@RequestMapping(value="search",method = RequestMethod.GET)
-//	@ResponseBody
-//	public List<String> search(HttpServletRequest request) {
-//		String keyword = request.getParameter("term");
-//		return productService.search(keyword);
-//	}
+
+	}
+	//search
+	@RequestMapping(value="search",method= RequestMethod.GET)
+	public String search(HttpServletRequest request,ModelMap modelMap ) {
+		String keyword = request.getParameter("keywordsearch");
+		modelMap.put("listcategory", categoryService.findAll());
+		List<Product> products= productService.searchProduct(keyword);
+		PagedListHolder pagedListHolder = new PagedListHolder(products);
+		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
+		pagedListHolder.setPage(page);
+		// pagedListHolder.setMaxLinkedPages(2);
+		pagedListHolder.setPageSize(3);
+		modelMap.put("pagedListHolder", pagedListHolder);
+		return "product.search";
+	}
+	// @RequestMapping(value="search",method = RequestMethod.GET)
+	// @ResponseBody
+	// public List<String> search(HttpServletRequest request) {
+	// String keyword = request.getParameter("term");
+	// return productService.search(keyword);
+	// }
 }

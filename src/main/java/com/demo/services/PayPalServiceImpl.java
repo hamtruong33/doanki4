@@ -19,6 +19,7 @@ public class PayPalServiceImpl implements PayPalService{
 		payPalConfig.setBusiness(environment.getProperty("paypal.business"));
 		payPalConfig.setPosturl(environment.getProperty("paypal.posturl"));
 		payPalConfig.setReturnurl(environment.getProperty("paypal.returnurl"));
+		payPalConfig.setReturnurl1(environment.getProperty("paypal.returnurl1"));
 		return payPalConfig;
 	}
 

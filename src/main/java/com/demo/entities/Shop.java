@@ -1,5 +1,5 @@
 package com.demo.entities;
-// Generated Nov 9, 2018 10:23:40 AM by Hibernate Tools 5.2.10.Final
+// Generated Nov 30, 2018 1:00:39 PM by Hibernate Tools 5.2.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -38,6 +38,10 @@ public class Shop implements java.io.Serializable {
 	private Integer bankNumber;
 	private boolean status;
 	private String email;
+	private String token;
+	private String address;
+	private String profile;
+	private Date dateEnd;
 	private Set<Roleforuser> roleforusers = new HashSet<Roleforuser>(0);
 	private Set<Product> products = new HashSet<Product>(0);
 
@@ -45,7 +49,7 @@ public class Shop implements java.io.Serializable {
 	}
 
 	public Shop(Membership membership, String name, String username, String password, int identityCard,
-			Date dateCreated, boolean status) {
+			Date dateCreated, boolean status, String email) {
 		this.membership = membership;
 		this.name = name;
 		this.username = username;
@@ -53,11 +57,12 @@ public class Shop implements java.io.Serializable {
 		this.identityCard = identityCard;
 		this.dateCreated = dateCreated;
 		this.status = status;
+		this.email = email;
 	}
 
 	public Shop(Membership membership, String name, String description, Double vote, String username, String password,
-			int identityCard, Date dateCreated, Integer bankNumber, boolean status, Set<Roleforuser> roleforusers,
-			Set<Product> products) {
+			int identityCard, Date dateCreated, String token, Integer bankNumber, boolean status, String email, String address,
+			String profile, Date dateEnd, Set<Roleforuser> roleforusers, Set<Product> products) {
 		this.membership = membership;
 		this.name = name;
 		this.description = description;
@@ -68,37 +73,13 @@ public class Shop implements java.io.Serializable {
 		this.dateCreated = dateCreated;
 		this.bankNumber = bankNumber;
 		this.status = status;
+		this.token = token;
+		this.email = email;
+		this.address = address;
+		this.profile = profile;
+		this.dateEnd = dateEnd;
 		this.roleforusers = roleforusers;
 		this.products = products;
-	}
-
-	@Column(name = "email", nullable = false, length = 250)
-	public String getEmail() {
-		return this.email;
-	}
-
-	public Shop(Integer id, Membership membership, String name, String description, Double vote, String username,
-			String password, int identityCard, Date dateCreated, Integer bankNumber, boolean status, String email,
-			Set<Roleforuser> roleforusers, Set<Product> products) {
-		super();
-		this.id = id;
-		this.membership = membership;
-		this.name = name;
-		this.description = description;
-		this.vote = vote;
-		this.username = username;
-		this.password = password;
-		this.identityCard = identityCard;
-		this.dateCreated = dateCreated;
-		this.bankNumber = bankNumber;
-		this.status = status;
-		this.email = email;
-		this.roleforusers = roleforusers;
-		this.products = products;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	@Id
@@ -117,6 +98,16 @@ public class Shop implements java.io.Serializable {
 	@JoinColumn(name = "membershipid", nullable = false)
 	public Membership getMembership() {
 		return this.membership;
+	}
+	
+	
+	@Column(name = "token", length = 250)
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public void setMembership(Membership membership) {
@@ -150,7 +141,7 @@ public class Shop implements java.io.Serializable {
 		this.vote = vote;
 	}
 
-	@Column(name = "username", nullable = false, length = 250)
+	@Column(name = "username",  length = 250)
 	public String getUsername() {
 		return this.username;
 	}
@@ -203,6 +194,43 @@ public class Shop implements java.io.Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	@Column(name = "email", nullable = false, length = 250)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Column(name = "address", length = 250)
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	@Column(name = "profile", length = 250)
+	public String getProfile() {
+		return this.profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_End", length = 10)
+	public Date getDateEnd() {
+		return this.dateEnd;
+	}
+
+	public void setDateEnd(Date dateEnd) {
+		this.dateEnd = dateEnd;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY)

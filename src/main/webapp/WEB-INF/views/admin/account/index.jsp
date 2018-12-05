@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tg" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -37,8 +38,9 @@
 								<th>Role</th>
 								<th>Email</th>
 								<th>Address</th>
-								<th>phone</th>
-								<th>photo</th>
+								<th>Phone</th>
+								<th>Photo</th>
+
 								<th>Option</th>
 
 							</tr>
@@ -58,37 +60,42 @@
 									<td>${user.photo}<img height="150" width="150" alt=""
 										src="${pageContext.request.contextPath }/resources/images/user/${item.photo}">
 									</td>
-									<td><button type="button" class="btn btn-default"
+
+									<td><!-- <button type="button" class="btn btn-default"
 											data-toggle="modal" data-target="#modal-default">
-											Edit</button>|
-<%-- <a onclick="return confirm('Are you sure?')"
-										href="${pageContext.request.contextPath }/admin/account/delete/${item.id }" >Delete</a> --%>
-										<div class="modal fade" id="modal-default">
+											Edit</button> -->| <a onclick="return confirm('Are you sure?')"
+										href="${pageContext.request.contextPath }/admin/account/delete/${item.id }">Delete</a>
+										<%-- <div class="modal fade" id="modal-default">
 											<div class="modal-dialog">
 												<div class="modal-content">
-												<form method="post" action="${pageContext.request.contextPath }/admin/account/disable/${item.id }">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-														<h4 class="modal-title">Edit Account</h4>
-													</div>
-													<div class="modal-body">
-														Status<input type="checkbox"  name="status">
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-default pull-left"
-															data-dismiss="modal">Close</button>
-														<button type="submit" class="btn btn-primary" >Save
-															changes</button>
-													</div>
-												</form>
+													<form method="post"
+														action="${pageContext.request.contextPath }/admin/account/edit/${item.id }">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h4 class="modal-title">Edit Account</h4>
+														</div>
+														<div class="modal-body">
+															<c:if test="${item.status= true }">Status<input type="checkbox" checked="checked" name="status"></c:if>
+															<c:if test="${item.status= false }">Status<input type="checkbox"  name="status"></c:if>
+															<br>
+															
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default pull-left"
+																data-dismiss="modal">Close</button>
+															<button type="submit" class="btn btn-primary">Save
+																changes</button>
+														</div>
+													</form>
 												</div>
 												<!-- /.modal-content -->
 											</div>
 											<!-- /.modal-dialog -->
-										</div></td>
+										</div> --%>
+										</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -110,3 +117,27 @@
 	</div>
 	<!-- /.row -->
 </section>
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						var string1 = GetParameterValues('msg');
+						var string2 = "delete";
+						if (string1.toLowerCase() === string2.toLowerCase()) {
+							alert("This account having orders ,so you can't delete it");
+						}
+						function GetParameterValues(param) {
+							var url = window.location.href.slice(
+									window.location.href.indexOf('?') + 1)
+									.split('&');
+							for (var i = 0; i < url.length; i++) {
+								var urlparam = url[i].split('=');
+								if (urlparam[0] == param) {
+									return urlparam[1];
+								}
+							}
+						}
+					});
+
+	
+</script>
