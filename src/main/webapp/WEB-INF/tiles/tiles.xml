@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<!-- <definition name="hometemplate" template="/WEB-INF/views/template/hometemplate.jsp">
+		<put-attribute name="content" value=""></put-attribute>
+	</definition> -->
+	
+	<definition name="mytemplate" template="/WEB-INF/views/template/mytemplate.jsp">
+		<put-attribute name="content" value=""></put-attribute>
+	</definition>
+	<definition name="home.index" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/home/index.jsp"></put-attribute>
+	</definition>
+	<definition name="home.loginAndRegister" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/home/loginAndRegister.jsp"></put-attribute>
+	</definition>
+	<definition name="product.detail" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/product/detail.jsp"></put-attribute>
+	</definition>
+	<definition name="product.category" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/product/category.jsp"></put-attribute>
+	</definition>
+	<definition name="cart.index" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/cart/index.jsp"></put-attribute>
+	</definition>
+	<!-- <definition name="cart.success" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/cart/success.jsp"></put-attribute>
+	</definition> -->
+	<definition name="checkout.index" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/checkout/index.jsp"></put-attribute>
+	</definition>
+	<definition name="checkout.success" extends="mytemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/views/customer/checkout/success.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="user.profile" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/user/profile.jsp"></put-attribute>
+	</definition>
+	<definition name="user.setting" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/customer/user/setting.jsp"></put-attribute>
+	</definition>
+	<definition name="account.forgotPassword" extends="mytemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/views/customer/home/forgotPassword.jsp"></put-attribute>
+	</definition>
+	<definition name="account.resetPassword" extends="mytemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/views/customer/home/resetPassword.jsp"></put-attribute>
+	</definition>
+	
+
+</tiles-definitions>

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringMvcOpenCartDoanki4Application<SpringMVC_OpenCart_Doanki4>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.demo.SpringMvcOpenCartDoanki4Application",
+            "projectName": "SpringMVC_OpenCart_Doanki4",
+            "args": ""
+        }
+    ]
+}

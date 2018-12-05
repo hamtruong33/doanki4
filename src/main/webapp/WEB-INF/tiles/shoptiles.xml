@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	
+	<definition name="loginshoptemplate" template="/WEB-INF/views/template/loginsellertemplate.jsp">
+		<put-attribute name="content" value=""></put-attribute>
+	</definition>
+	<definition name="shop.login" extends="loginshoptemplate">
+		<put-attribute name="content" value="/WEB-INF/views/seller/login.jsp"></put-attribute>
+	</definition>
+	<definition name="shop.index" extends="mytemplate">
+		<put-attribute name="content" value="/WEB-INF/views/seller/index.jsp"></put-attribute>
+	</definition>
+	
+	
+
+</tiles-definitions>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="admin_template"
+		template="/WEB-INF/views/template/admin_template.jsp"> 
+		<put-attribute name="content" value=""/>
+	</definition>
+	<definition name="loginadmintemplate"
+		template="/WEB-INF/views/template/loginadmintemplate.jsp"> 
+		<put-attribute name="content" value=""/>
+	</definition>
+	<definition name="adminlogin.index" extends="loginadmintemplate">
+		<put-attribute name="content" value="/WEB-INF/views/admin/home/login.jsp"/>
+	</definition>
+	<definition name="adminhome.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/home/index.jsp"/>
+	</definition>
+	<!-- product -->
+	<definition name="productadmin.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/product/index.jsp"></put-attribute>
+	</definition>
+	<definition name="productadmin.add" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/product/addproduct.jsp"></put-attribute>
+	</definition>
+	<definition name="productadmin.edit" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/product/editproduct.jsp"></put-attribute>
+	</definition>
+	<definition name="productadmin.editphoto" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/product/editphoto.jsp"></put-attribute>
+	</definition>
+	<definition name="productadmin.checkproduct" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/product/checkproduct.jsp"></put-attribute>
+	</definition>
+	<!-- Account -->
+	<definition name="account.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/account/index.jsp"></put-attribute>
+	</definition>
+	<definition name="account.add" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/account/addaccount.jsp"></put-attribute>
+	</definition>
+	<!-- Category -->
+	<definition name="category.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/category/index.jsp"></put-attribute>
+	</definition>
+	<definition name="category.add" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/category/addcategory.jsp"></put-attribute>
+	</definition>
+	<!-- Order -->
+	<definition name="order.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/order/index.jsp"></put-attribute>
+	</definition>
+	<!-- Producer -->
+	<definition name="producer.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/producer/index.jsp"></put-attribute>
+	</definition>
+	<definition name="producer.add" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/producer/addproducer.jsp"></put-attribute>
+	</definition>
+	
+	<!-- Role -->
+	<definition name="role.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/role/index.jsp"></put-attribute>
+	</definition>
+	<definition name="role.add" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/role/addrole.jsp"></put-attribute>
+	</definition>
+	<!-- Shop -->
+	<definition name="shop.index" extends="admin_template">
+		<put-attribute name="content" value="/WEB-INF/views/admin/shop/index.jsp"></put-attribute>
+	</definition>
+	
+	
+</tiles-definitions>
