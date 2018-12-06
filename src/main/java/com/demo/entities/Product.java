@@ -47,9 +47,30 @@ public class Product implements java.io.Serializable {
 	private Integer quantity;
 	//@Temporal(TemporalType.DATE)
 	private Date dateCreated;
+	private boolean isnew;
 	private Set<Orderdetail> orderdetails = new HashSet<Orderdetail>(0);
 	private Set<Review> reviews = new HashSet<Review>(0);
 	private Set<Photo> photos = new HashSet<Photo>(0);
+
+	public Product(Integer id, Category category, Producer producer, Shop shop, String name, double price, String description, boolean status, int accountid, Double discount, Integer quantity, Date dateCreated, boolean isnew, Set<Orderdetail> orderdetails, Set<Review> reviews, Set<Photo> photos) {
+		this.id = id;
+		this.category = category;
+		this.producer = producer;
+		this.shop = shop;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.status = status;
+		this.accountid = accountid;
+		this.discount = discount;
+		this.quantity = quantity;
+		this.dateCreated = dateCreated;
+		this.isnew = isnew;
+		this.orderdetails = orderdetails;
+		this.reviews = reviews;
+		this.photos = photos;
+	}
+
 
 	public Product() {
 	}
@@ -223,5 +244,20 @@ public class Product implements java.io.Serializable {
 	public void setPhotos(Set<Photo> photos) {
 		this.photos = photos;
 	}
+
+
+    /**
+     * @return boolean return the isnew
+     */
+    public boolean isIsnew() {
+        return isnew;
+    }
+
+    /**
+     * @param isnew the isnew to set
+     */
+    public void setIsnew(boolean isnew) {
+        this.isnew = isnew;
+    }
 
 }

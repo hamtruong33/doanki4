@@ -3,11 +3,8 @@ package com.demo.admin.controllers;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -61,6 +58,7 @@ public class ProductAdminController implements ServletConfigAware {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(ModelMap modelMap, HttpServletRequest request) {
+		
 		List<Product> products = (List<Product>) productService.findAll();
 		PagedListHolder pagedListHolder = new PagedListHolder(products);
 		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
@@ -71,7 +69,7 @@ public class ProductAdminController implements ServletConfigAware {
 	}
 	@RequestMapping(value="checkproduct",method=RequestMethod.GET)
 	public String checkproduct(ModelMap modelMap, HttpServletRequest request) {
-		List<Product> products =  productService.findAllByStatus();
+		List<Product> products =  productService.findAllByNews();
 		PagedListHolder pagedListHolder = new PagedListHolder(products);
 		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
 		pagedListHolder.setPage(page);
@@ -122,12 +120,20 @@ public class ProductAdminController implements ServletConfigAware {
 		modelMap.put("shops", shopService.findAll());
 		return "productadmin.add";
 	}
+	@RequestMapping(method=RequestMethod.GET,value="accept/{id}")
+	public String accept(@PathVariable("id") int id){
+		Product product = productService.findById(id);
+		product.setStatus(true);
+		product.setIsnew(false);
+		productService.save(product);
+		return "redirect:../checkproduct";
+	}
 	@RequestMapping(method = RequestMethod.POST, value = "editsave")
 	public String editsave(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult,
 			@RequestParam(value = "file") MultipartFile[] files, ModelMap modelMap
 
 	) {
-		System.out.println("AAA");
+		
 		ProductValidator productValidator = new ProductValidator();
 		productValidator.validate(product, bindingResult);
 		if (bindingResult.hasErrors()) {

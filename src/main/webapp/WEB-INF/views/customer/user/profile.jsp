@@ -82,25 +82,25 @@
 												<div class="row clearfix">
 													<div class="col-md-4">
 														<div class="entry-image">
-															<a
+															<!-- <a
 																href="${pageContext.request.contextPath}/resources/images/portfolio/full/17.jpg"
-																data-lightbox="image"> <%-- <img class="image_fade"
-															src="${pageContext.request.contextPath}/resources/images/${r.product.photos[0].name}"
-															alt="Standard Post with Image"> --%>
-															</a>
+																data-lightbox="image">  <img class="image_fade"
+															src="${pageContext.request.contextPath}/resources/images/${r.product.photos.get(0).name}"
+															alt="Standard Post with Image"> 
+															</a> -->
 														</div>
 													</div>
 													<div class="col-md-8">
 														<div class="entry-title">
 															<h3>
-																<a href="blog-single.html">${r.content }</a>
+																<a href="${pageContext.request.contextPath}product/detail/${r.product.id}">${r.content }</a>
 															</h3>
 														</div>
 														<ul class="entry-meta clearfix">
 															<li><i class="icon-calendar3"></i> ${r.dateCreated }</li>
-															<li><a href="blog-single.html#comments"><i
-																	class="icon-comments"></i> 13</a></li>
-															<li><a href="#"><i class="icon-camera-retro"></i></a></li>
+															<!-- <li><a href="blog-single.html#comments"><i
+																	class="icon-comments"></i> 13</a></li> -->
+															<!-- <li><a href="#"><i class="icon-camera-retro"></i></a></li> -->
 														</ul>
 														<div class="entry-content">
 															<p></p>

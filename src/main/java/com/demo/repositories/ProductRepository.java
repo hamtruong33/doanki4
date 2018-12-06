@@ -20,8 +20,8 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 	@Query("select p from Product p where p.status  = true and p.quantity > 0 and p.shop.status = true")
 	public List<Product> findAllByStatusAndQuantity();
 
-	@Query("select p from Product p where p.status  = false order by dateCreated desc")
-	public List<Product> findAllByStatus();
+	@Query("select p from Product p where p.isnew  = true ")
+	public List<Product> findAllByNews();
 
 	@Query("select name from Product where name like %:keyword%")
 	public List<String> searchautocomple(@Param("keyword") String keyword);

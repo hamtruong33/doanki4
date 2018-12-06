@@ -111,6 +111,7 @@ public class CheckOutController {
 					orderdetail.setProduct(item.getProduct());
 					orderdetail.setQuantity(item.getQuantity());
 					orderdetail.setPrice(item.getQuantity() * item.getProduct().getPrice());
+					orderdetail.setStatus("Pending");
 					total = total + item.getQuantity() * item.getProduct().getPrice();
 					orderDetailService.save(orderdetail);
 					Product product = item.getProduct();

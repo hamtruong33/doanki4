@@ -85,8 +85,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> findAllByStatus() {
-		return productRepository.findAllByStatus();
+	public List<Product> findAllByNews() {
+		return productRepository.findAllByNews();
 	}
 
 	@Override
@@ -117,9 +117,10 @@ public class ProductServiceImpl implements ProductService {
 		product.setProducer(producerRepository.findById(domain.getProducerId()).orElse(null));
 		product.setCategory(categoryRepository.findById(domain.getCategoryId()).orElse(null));
 		product.setDescription(domain.getDescription());
-		//product.setStatus(domain.isStatus());
+		product.setStatus(domain.isStatus());
 		product.setDiscount(domain.getDiscount());
 		product.setQuantity(domain.getQuantity());
+		product.setIsnew(true);
 
 	}
 

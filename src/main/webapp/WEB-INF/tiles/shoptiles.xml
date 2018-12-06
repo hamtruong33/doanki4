@@ -52,8 +52,14 @@
     <definition name="seller.order.index" extends="seller_template">
         <put-attribute name="content" value="/WEB-INF/views/seller/order/index.jsp"></put-attribute>
     </definition>
+     <definition name="seller.order.new.index" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/order/neworders.jsp"></put-attribute>
+    </definition>
     <definition name="seller.order.detail" extends="seller_template">
         <put-attribute name="content" value="/WEB-INF/views/seller/order/detailOrder.jsp"></put-attribute>
+    </definition>
+    <definition name="seller.order.new.detail" extends="seller_template">
+        <put-attribute name="content" value="/WEB-INF/views/seller/order/detailOrdernew.jsp"></put-attribute>
     </definition>
 
     <!-- Invoice Print -->

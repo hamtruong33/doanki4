@@ -18,7 +18,9 @@ public interface OrderDetailService {
 
 	public List<Orderdetail> findByUser(int iduser);
 
-	public Orderdetail findByProductId(int productId);
+	public Orderdetail findByProductIdAndOrderID( int productId, int ordersid);
+
+	public List<Orderdetail> findByStatusAndShop( String status, int idshop);
 	
 	public List<Orderdetail> findByShopNew( int idshop);
 }

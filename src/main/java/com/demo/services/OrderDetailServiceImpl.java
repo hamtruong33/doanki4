@@ -35,16 +35,24 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 		return detailRepository.findByUser(iduser);
 	}
 
-	@Override
-	public Orderdetail findByProductId(int productId) {
-		return detailRepository.findByProductId(productId);
-	}
+
 
 	@Override
 	public List<Orderdetail> findByShopNew(int idshop) {
 		return detailRepository.findByShopNew(idshop);
 	}
 
+	@Override
+	public Orderdetail findByProductIdAndOrderID(int productId, int ordersid) {
+		return detailRepository.findByProductIdAndOrderID(productId, ordersid);
+	}
+
+	@Override
+	public List<Orderdetail> findByStatusAndShop(String status, int idshop) {
+		return detailRepository.findByStatusAndShop(status, idshop);
+	}
+
+	
 	
 
 	

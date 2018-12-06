@@ -32,7 +32,7 @@ public interface ProductService {
 
 	public List<Product> findAllByStatusAndQuantity();
 
-	public List<Product> findAllByStatus();
+	public List<Product> findAllByNews();
 
 	public List<BestSeller> bestseller();
 

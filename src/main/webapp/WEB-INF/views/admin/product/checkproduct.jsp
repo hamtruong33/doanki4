@@ -68,7 +68,7 @@
 									<td>${product.discount }</td>
 									<td>${product.producer.name }</td>
 									<th><a
-										href="${pageContext.request.contextPath }/admin/product/edit/${product.id}">Edit</a>|<a
+										href="${pageContext.request.contextPath }/admin/product/accept/${product.id}">Accept</a>|<a
 										href="${pageContext.request.contextPath }/admin/product/delete/${product.id}"
 										onclick="return confirm('Are you sure?')">Delete</a></th>
 								</tr>

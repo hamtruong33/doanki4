@@ -50,7 +50,7 @@
                                     <fmt:formatDate var="dateCreate" value="${o.orders.dateCreated}" pattern="MM/dd/yyyy"/>
                                         ${dateCreated}
                                 </td>
-                                <td><a href="${pageContext.request.contextPath}/seller/order/order-detail/${o.id.ordersId}/${o.id.productId}">Detail</a></td>
+                                <td><a href="${pageContext.request.contextPath}/seller/order/order-detailnew/${o.id.ordersId}/${o.id.productId}">Detail</a></td>
                             </tr>
                         </c:forEach>
 

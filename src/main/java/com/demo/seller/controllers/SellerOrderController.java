@@ -1,9 +1,8 @@
 package com.demo.seller.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import com.demo.entities.Orderdetail;
@@ -49,6 +48,39 @@ public class SellerOrderController {
         modelMap.put("orderdetails", orderdetails);
         return "seller.order.index";
     }
+    @RequestMapping(method = RequestMethod.GET ,value="neworder")
+    public String neworder(ModelMap modelMap, HttpSession session) {
+
+        Shop shop = (Shop) session.getAttribute("shop");
+        List<Orderdetail> orderdetails = orderDetailService.findByStatusAndShop("Pending", shop.getId());
+        modelMap.put("orderdetails", orderdetails);
+        return "seller.order.new.index";
+    }
+    @RequestMapping(method = RequestMethod.GET ,value="accept/{ordersid}/{productid}")
+    public String accept(@PathVariable("ordersid") int ordersid,@PathVariable("productid") int productid,ModelMap modelMap, HttpSession session) {
+
+        Shop shop = (Shop) session.getAttribute("shop");
+        Orderdetail orderdetail = orderDetailService.findByProductIdAndOrderID(productid, ordersid);
+        orderdetail.setStatus("Shipping");
+        orderDetailService.save(orderdetail);
+        return "redirect:../../neworder";
+    }
+    @RequestMapping(method = RequestMethod.GET, value = "order-detailnew/{orderId}/{id}")
+    public String detailnew(@PathVariable("id") int id,@PathVariable("orderId") int orderId, ModelMap modelMap, HttpSession session) {
+        Shop shop = (Shop) session.getAttribute("shop");
+        Orders orders = orderService.findById(orderId);
+        User user = userService.findByUserId(orders.getUser().getId());
+        Product product = productService.findById(id) ;
+        Orderdetail orderdetail = orderDetailService.findByProductIdAndOrderID(product.getId(), orders.getId());
+       // List<Product> products = productService.findByShopId(shop.getId());
+
+        modelMap.put("shop",shop);
+        modelMap.put("user",user);
+        modelMap.put("orders", orders);
+        modelMap.put("product",product);
+        modelMap.put("orderdetail",orderdetail);
+        return "seller.order.new.detail";
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "order-detail/{orderId}/{id}")
     public String detail(@PathVariable("id") int id,@PathVariable("orderId") int orderId, ModelMap modelMap, HttpSession session) {
@@ -56,7 +88,7 @@ public class SellerOrderController {
         Orders orders = orderService.findById(orderId);
         User user = userService.findByUserId(orders.getUser().getId());
         Product product = productService.findById(id) ;
-        Orderdetail orderdetail = orderDetailService.findByProductId(id);
+        Orderdetail orderdetail = orderDetailService.findByProductIdAndOrderID(product.getId(), orders.getId());
        // List<Product> products = productService.findByShopId(shop.getId());
 
         modelMap.put("shop",shop);
