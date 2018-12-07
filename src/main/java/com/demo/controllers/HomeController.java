@@ -31,8 +31,10 @@ import com.demo.entities.Roleforuser;
 import com.demo.entities.Shop;
 import com.demo.entities.User;
 import com.demo.services.EmailService;
+import com.demo.services.OrderDetailService;
 import com.demo.services.OrderService;
 import com.demo.services.ProductService;
+import com.demo.services.ReviewService;
 import com.demo.services.RoleService;
 import com.demo.services.ShopService;
 import com.demo.services.UserService;
@@ -58,8 +60,14 @@ public class HomeController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	// @Autowired
+	// private OrderService orderService;
+
 	@Autowired
-	private OrderService orderService;
+	private OrderDetailService orderDetailService;
+
+	@Autowired
+	private ReviewService reviewService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(ModelMap modelMap) {
@@ -90,18 +98,19 @@ public class HomeController {
 		if(accessDenied!=null) {
 			modelMap.put("msg", "Access Denied");
 		}
-		if(authentication ==null) {
+		// if(authentication ==null) {
 			
 			User user = new User();
 			modelMap.put("user", user);
 			
 			return "home.loginAndRegister";
-		}else {
-			User user = userService.findByUsername(authentication.getName());
-			modelMap.put("user", user);
-			modelMap.put("orders", orderService.findbyuser(user.getId()));
-			return "user.profile";
-		}
+		// }else {
+		// 	User user = userService.findByUsername(authentication.getName());
+		// 	modelMap.put("user", user);
+		// 	modelMap.put("ordersdetails", orderDetailService.findByUser(user.getId()));
+		// 	modelMap.put("reviews", reviewService.findallByIdUser(user.getId()));
+		// 	return "redirect:../../profile";
+		// }
 		
 	}
 	

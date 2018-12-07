@@ -38,8 +38,8 @@ public class UserController implements ServletContextAware{
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private OrderService orderService;
+	// @Autowired
+	// private OrderService orderService;
 	
 	@Autowired
 	private OrderDetailService orderDetailService;

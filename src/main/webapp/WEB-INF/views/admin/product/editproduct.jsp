@@ -76,6 +76,8 @@
 	<!-- /.box-body -->
 
 	<div class="box-footer">
+			<s:input type="hidden" path="id" 
+			 />
 		<s:button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?')">Submit</s:button>
 	</div>
 </s:form>

@@ -120,9 +120,10 @@
 							<li class="mega-menu"><a href="#"><div>Sale</div></a></li>
 							
 							<li class="mega-menu"><a href="${pageContext.request.contextPath}/seller/home"><div>Become A Seller Now </div></a></li>
-							<li class="current"><a href="shop.html"><div>Shop</div></a>
-							</li>
-							<c:if test="${sessionScope.user==null }">
+							<!-- <li class="current"><a href="shop.html"><div>Shop</div></a>
+							</li> -->
+							<c:if test="${pageContext.request.userPrincipal.name==null}">
+								
 								<li class="mega-menu"><a
 									href="${pageContext.request.contextPath}/home/login"><div>Register
 											Now</div></a></li>

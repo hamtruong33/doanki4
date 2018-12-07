@@ -139,13 +139,11 @@ public class ProductAdminController implements ServletConfigAware {
 		if (bindingResult.hasErrors()) {
 			return "productadmin.edit";
 		} else {
-			
+
+			// Product product2 = productService.findById(product.getId());
+			// product.setPhotos(product2.getPhotos());
 			if (productService.save(product) != null) {
-//				for (MultipartFile file : files) {
-//					String fileName = saveFile(file);
-//					photoService.save(new Photo(product, fileName));
-//
-//				}
+
 				return "redirect:../product";
 			} else {
 				return "productadmin.edit";

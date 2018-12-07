@@ -26,7 +26,7 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 	@Query("select name from Product where name like %:keyword%")
 	public List<String> searchautocomple(@Param("keyword") String keyword);
 
-	@Query("select new com.demo.entities.ProductEntity(id,name,price) from Product where name like %:keyword%  ")
+	@Query("select new com.demo.entities.ProductEntity(id,name,price) from Product p where p.name like %:keyword% and p.quantity >0 and p.shop.status = true and p.status  = true  ")
 	public List<ProductEntity> search(@Param("keyword") String keyword);
 
 	@Query("select p from Product p where p.name like %:keyword%  ")

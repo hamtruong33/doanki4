@@ -9,10 +9,8 @@
 
 		<div class="col-md-9">
 
-			<img
-				src="${pageContext.request.contextPath}/resources/images/user/${user.photo}"
-				class="alignleft img-circle img-thumbnail notopmargin nobottommargin"
-				alt="Avatar" style="max-width: 84px;">
+			<img src="${pageContext.request.contextPath}/resources/images/user/${user.photo}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin"
+			 alt="Avatar" style="max-width: 84px;">
 
 			<div class="heading-block noborder">
 				<h3>${user.fullName }</h3>
@@ -58,14 +56,21 @@
 										<c:forEach var="o" items="${ordersdetails }">
 											<tr>
 												<td><code>${o.orders.dateCreated }</code></td>
-												<td>${o.product.name }</td>
-												<td>${o.product.shop.name }</td>
-												<td>${o.orders.confirmNumber }</td>
-												<td>${o.status }</td>
-											
 												
-											</tr>
-											
+													<c:forEach var="photo" items="${o.product.photos }" varStatus="status">
+														<c:if test="${status.count < 2 }">
+														<td class="cart-product-thumbnail"><a href="#"><img width="64" height="64" src="${pageContext.request.contextPath}/resources/images/${photo.name}"
+														 alt="Pink Printed Dress"></a></td>
+														</c:if>
+													</c:forEach>
+												
+										<td>${o.product.shop.name }</td>
+										<td>${o.orders.confirmNumber }</td>
+										<td>${o.status }</td>
+
+
+										</tr>
+
 										</c:forEach>
 
 									</tbody>
@@ -82,18 +87,18 @@
 												<div class="row clearfix">
 													<div class="col-md-4">
 														<div class="entry-image">
-															<!-- <a
-																href="${pageContext.request.contextPath}/resources/images/portfolio/full/17.jpg"
-																data-lightbox="image">  <img class="image_fade"
-															src="${pageContext.request.contextPath}/resources/images/${r.product.photos.get(0).name}"
-															alt="Standard Post with Image"> 
-															</a> -->
+															<c:forEach var="photo" items="${r.product.photos }" varStatus="status">
+																<c:if test="${status.count < 2 }">
+																	<td class="cart-product-thumbnail"><a href="${pageContext.request.contextPath}/product/detail/${r.product.id}"><img width="10" height="10" src="${pageContext.request.contextPath}/resources/images/${photo.name}"
+																			 alt="Pink Printed Dress"></a></td>
+																</c:if>
+															</c:forEach>
 														</div>
 													</div>
 													<div class="col-md-8">
 														<div class="entry-title">
 															<h3>
-																<a href="${pageContext.request.contextPath}product/detail/${r.product.id}">${r.content }</a>
+																<a href="${pageContext.request.contextPath}/product/detail/${r.product.id}">${r.content }</a>
 															</h3>
 														</div>
 														<ul class="entry-meta clearfix">
@@ -348,17 +353,12 @@
 					<i class="icon-envelope2 float-right"></i>
 				</a> <a href="#" class="list-group-item list-group-item-action clearfix">Billing
 					<i class="icon-credit-cards float-right"></i> -->
-				</a> <a href="${pageContext.request.contextPath}/user/setting"
-					class="list-group-item list-group-item-action clearfix">Settings
+				</a> <a href="${pageContext.request.contextPath}/user/setting" class="list-group-item list-group-item-action clearfix">Settings
 					<i class="icon-cog float-right"></i>
-				</a> <a href="#"
-					onclick="document.getElementById('logout-form').submit();"
-					class="list-group-item list-group-item-action clearfix">Logout
+				</a> <a href="#" onclick="document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action clearfix">Logout
 					<i class="icon-line2-logout float-right"></i>
 				</a>
-				<s:form id="logout-form"
-					action="${pageContext.request.contextPath}/user/logout"
-					method="post">
+				<s:form id="logout-form" action="${pageContext.request.contextPath}/user/logout" method="post">
 
 				</s:form>
 
@@ -376,30 +376,18 @@
 				<h4>Social Profiles</h4>
 			</div>
 
-			<a href="#"
-				class="social-icon si-facebook si-small si-rounded si-light"
-				title="Facebook"> <i class="icon-facebook"></i> <i
-				class="icon-facebook"></i>
-			</a> <a href="#"
-				class="social-icon si-gplus si-small si-rounded si-light"
-				title="Google+"> <i class="icon-gplus"></i> <i
-				class="icon-gplus"></i>
-			</a> <a href="#"
-				class="social-icon si-dribbble si-small si-rounded si-light"
-				title="Dribbble"> <i class="icon-dribbble"></i> <i
-				class="icon-dribbble"></i>
-			</a> <a href="#"
-				class="social-icon si-flickr si-small si-rounded si-light"
-				title="Flickr"> <i class="icon-flickr"></i> <i
-				class="icon-flickr"></i>
-			</a> <a href="#"
-				class="social-icon si-linkedin si-small si-rounded si-light"
-				title="LinkedIn"> <i class="icon-linkedin"></i> <i
-				class="icon-linkedin"></i>
-			</a> <a href="#"
-				class="social-icon si-twitter si-small si-rounded si-light"
-				title="Twitter"> <i class="icon-twitter"></i> <i
-				class="icon-twitter"></i>
+			<a href="#" class="social-icon si-facebook si-small si-rounded si-light" title="Facebook"> <i class="icon-facebook"></i>
+				<i class="icon-facebook"></i>
+			</a> <a href="#" class="social-icon si-gplus si-small si-rounded si-light" title="Google+"> <i class="icon-gplus"></i>
+				<i class="icon-gplus"></i>
+			</a> <a href="#" class="social-icon si-dribbble si-small si-rounded si-light" title="Dribbble"> <i class="icon-dribbble"></i>
+				<i class="icon-dribbble"></i>
+			</a> <a href="#" class="social-icon si-flickr si-small si-rounded si-light" title="Flickr"> <i class="icon-flickr"></i>
+				<i class="icon-flickr"></i>
+			</a> <a href="#" class="social-icon si-linkedin si-small si-rounded si-light" title="LinkedIn"> <i class="icon-linkedin"></i>
+				<i class="icon-linkedin"></i>
+			</a> <a href="#" class="social-icon si-twitter si-small si-rounded si-light" title="Twitter"> <i class="icon-twitter"></i>
+				<i class="icon-twitter"></i>
 			</a>
 
 		</div>
